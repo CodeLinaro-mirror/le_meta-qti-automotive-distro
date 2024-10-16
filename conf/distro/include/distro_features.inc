@@ -26,15 +26,16 @@ DISTRO_FEATURES:append = " vulkan"
 
 # WLAN
 DISTRO_FEATURES:append = " qti-wlan wifi"
+DISTRO_FEATURES:remove:sa8797 = "wifi"
 
 
 # SELinux
-DISTRO_FEATURES:append:sa8775 = " selinux"
-DISTRO_FEATURES_NATIVE:append:sa8775 = " selinux"
+# DISTRO_FEATURES:append:sa8797 = " selinux"
+# DISTRO_FEATURES_NATIVE:append:sa8797 = " selinux"
 #TODO enable on sa8797
 
 # Preferred refpolicy
-PREFERRED_PROVIDER_virtual/refpolicy:sa8775 = "selinux-policy"
-DEFAULT_ENFORCING:sa8775 = "enforcing"
-#TODO enable on sa8797
+# PREFERRED_PROVIDER_virtual/refpolicy:sa8797 = "selinux-policy"
+# DEFAULT_ENFORCING:sa8797 = "enforcing"
+
 

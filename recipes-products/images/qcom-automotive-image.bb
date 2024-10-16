@@ -11,4 +11,5 @@ LICENSE = "BSD-3-Clause-Clear"
 
 IMAGE_INSTALL += " \
     packagegroup-qti-core-minimal \
+    packagegroup-qti-umd \
 "
