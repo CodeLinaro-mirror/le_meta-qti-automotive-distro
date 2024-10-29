@@ -1,0 +1,72 @@
+# Copyright (c) 2023 Qualcomm Innovation Center, Inc. All rights reserved.
+# SPDX-License-Identifier: BSD-3-Clause-Clear
+
+# set_bb_env_internal.sh
+# Call set_bb_env_internal.sh in meta-qti-internal layer.
+# Set ROS layers
+
+if [[ ! $(readlink -f $(which sh)) =~ bash ]]
+then
+    echo ""
+    echo "### ERROR: Please Change your /bin/sh symlink to point to bash. ### "
+    echo ""
+    echo "### sudo ln -sf /bin/bash /bin/sh ### "
+    echo ""
+    return 1
+fi
+
+# The SHELL variable also needs to be set to /bin/bash otherwise the build
+# will fail, use chsh to change it to bash.
+if [[ ! $SHELL =~ bash ]]
+then
+    echo ""
+    echo "### ERROR: Please Change your shell to bash using chsh. ### "
+    echo ""
+    echo "### Make sure that the SHELL variable points to /bin/bash ### "
+    echo ""
+    return 1
+fi
+
+umask 022
+
+# This script
+THIS_SCRIPT=$(readlink -f ${BASH_SOURCE[0]})
+# Find where the global conf directory is...
+scriptdir="$(dirname "${THIS_SCRIPT}")"
+# Find where the WS is...
+SRC_TREE=$(readlink -f $scriptdir/../..)
+
+source ${SRC_TREE}/setup-environment
+
+# Automotive yocto conf update
+
+cat >> ${BUILDDIR}/conf/auto.conf <<EOF
+
+#----------------------------------------
+# Include automotive yocto ENV
+#----------------------------------------
+
+#Disable multiconfig build for automotive
+INHERIT += "qfile"
+BBMULTICONFIG:remove = "qcom-guestvm"
+# DL_DIR = "${DL_DIR}"
+BB_GENERATE_MIRROR_TARBALLS="1"
+SSTATE_MIRRORS ?= "file://.* file://${SSTATE_LOCAL_MIRROR}/PATH "
+PATH_TO_REPO ?= "file://"
+AUTOSOURCES = "${SRC_TREE}"
+# AUTOSOURCES = "${SRC_TREE}/sources/automotive"
+
+# Specify the path of the sectools tool and the security file required for lemans signature
+SECTOOLS_V1_DIR ??= "/pkg/sectools/int/latest"
+SECTOOLS_V2_DIR ??= "/pkg/sectools/v2/1.21/Linux"
+SECTOOLS_SECURITY_PROFILE ??= "${SRC_TREE}/security/securemsm/security_profiles/lemans_tz_security_profile.xml"
+
+INHERIT:remove = "rm_work"
+VARIANT ??= "debug"
+SRC_DIR_ROOT = "${SRC_TREE}"
+export KDIR := "${SRC_TREE}/sources/kernel/kernel_platform/kernel"
+PATH_TO_REPO := "git://${SRC_TREE}"
+PROTO = "file"
+PATH_TO_KERNEL := "git://${SRC_TREE}/sources"
+EOF
+
