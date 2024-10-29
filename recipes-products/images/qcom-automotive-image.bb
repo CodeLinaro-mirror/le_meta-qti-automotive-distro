@@ -13,3 +13,7 @@ IMAGE_INSTALL += " \
     packagegroup-qti-core-minimal \
     packagegroup-qti-umd \
 "
+
+IMAGE_INSTALL:remove += " \
+    packagegroup-qti-umd \
+" 
