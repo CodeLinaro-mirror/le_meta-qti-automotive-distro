@@ -206,4 +206,8 @@ SECURITY_CFLAGS:remove:quin-gvm-gen4-2:pn-codec2-app = " -Werror=conversion \
                                                          -Werror=sign-conversion \
                                                          -Werror=missing-field-initializers"
 
+# avb-utils
+SECURITY_CFLAGS:append:pn-avb-utils = " ${EXT_COMPILE_OPTIONS}"
+SECURITY_CFLAGS:remove:pn-avb-utils = " -Werror=conversion \
+                                        -Werror=sign-conversion"
 # Add other packages here...
