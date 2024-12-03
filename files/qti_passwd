@@ -1,0 +1,21 @@
+# Copyright (c) 2023 Qualcomm Innovation Center, Inc. All rights reserved.
+# SPDX-License-Identifier: BSD-3-Clause-Clear
+diag:x:53:53::
+system:x:1000:1000::
+camera:x:1006:1006::
+gps:x:1021:1021::
+adb:x:2000:2000::
+sensors:x:3011:3011::
+locclient:x:4021:4021::
+vnw:x:4022:4022::
+acdb-loader:x:4050:4050::
+amfs:x:4051:4051::
+codec2:x:4052:4052::
+leprop:x:4053:4053::
+binder:x:4054:4054::
+cnss-wlan:x:4055:4055::
+ais:x:4056:4056::
+qti-bt:x:4057:4057::
+agm:x:4058:4058::
+fde:x:4070:4070::
+qseecomd:x:4080:4080::
