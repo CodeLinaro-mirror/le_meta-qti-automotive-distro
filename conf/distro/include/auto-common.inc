@@ -17,7 +17,7 @@ PERSIST_IMAGE_ROOTFS_SIZE ?= "128M"
 VIRTUAL-RUNTIME_dev_manager = "udev"
 VIRTUAL-RUNTIME_init_manager = "systemd"
 
-# INCOMPATIBLE_LICENSE = "GPL-3.0-only LGPL-3.0-only AGPL-3.0-only"
+INCOMPATIBLE_LICENSE = "GPL-3.0-only LGPL-3.0-only AGPL-3.0-only"
 
 INCOMPATIBLE_LICENSE:sa8797 = " "
 

@@ -25,9 +25,11 @@ ARM_INSTRUCTION_SET       ?= "arm"
 # Optimization flags.
 ##################################################################
 COMMON_OPTIMIZATION = " \
-  -Wa,--noexecstack -fexpensive-optimizations \
-  -frename-registers -ftree-vectorize \
-  -finline-functions -finline-limit=64 \
+  -Wa,--noexecstack -ftree-vectorize -finline-functions \
+  "
+
+COMMON_OPTIMIZATION:class-target:toolchain-gcc = " \
+  -fexpensive-optimizations -frename-registers -finline-limit=64 \
   -Wno-error=maybe-uninitialized -Wno-error=unused-result \
   "
 
@@ -66,5 +68,5 @@ DEPLOY_DIR_IMAGE = "${DEPLOY_DIR}/images/${DEPLOY_NAME}"
 
 # Static Users for QTI
 USERADDEXTENSION ?= "useradd-staticids"
-USERADD_UID_TABLES:append = " files/qti_passwd"
-USERADD_GID_TABLES:append = " files/qti_group"
+USERADD_UID_TABLES:prepend = "files/qti_passwd "
+USERADD_GID_TABLES:prepend = "files/qti_group "
