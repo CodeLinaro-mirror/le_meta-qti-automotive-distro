@@ -1,7 +1,7 @@
 # Support systemd-user-session
 DISTRO_FEATURES:append = " pam"
-#SA8797 RUMI bringup remove pam.
-DISTRO_FEATURES:remove:sa8797 = "pam"
+
+
 
 # Display
 DISTRO_FEATURES:append = " wayland"
