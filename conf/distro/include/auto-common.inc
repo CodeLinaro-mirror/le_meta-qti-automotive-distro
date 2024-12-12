@@ -40,4 +40,3 @@ BB_DANGLINGAPPENDS_WARNONLY = "yes"
 
 #Align with poky/meta-poky/conf/distro/poky.conf
 OE_VERSION ?= "4.0.7"
-
