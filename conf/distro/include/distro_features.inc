@@ -1,7 +1,7 @@
 # Support systemd-user-session
 DISTRO_FEATURES:append = " pam"
-#SA8797 RUMI bringup remove pam.
-DISTRO_FEATURES:remove:sa8797 = "pam"
+
+
 
 # Display
 DISTRO_FEATURES:append = " wayland"
@@ -40,4 +40,5 @@ DISTRO_FEATURES:remove:sa8797 = "wifi"
 # PREFERRED_PROVIDER_virtual/refpolicy:sa8797 = "selinux-policy"
 # DEFAULT_ENFORCING:sa8797 = "enforcing"
 
-
+# Disable QCLinux Yocto Unused Distro
+DISTRO_FEATURES:remove = "x11"
