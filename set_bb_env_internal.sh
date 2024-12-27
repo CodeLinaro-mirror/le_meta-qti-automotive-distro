@@ -62,14 +62,31 @@ SECTOOLS_V2_DIR ??= "/pkg/sectools/v2/1.21/Linux"
 SECTOOLS_SECURITY_PROFILE ??= "${SRC_TREE}/security/securemsm/security_profiles/lemans_tz_security_profile.xml"
 
 INHERIT:remove = "rm_work"
-VARIANT ??= "debug"
+VARIANT = "${QVARIANT}"
 SRC_DIR_ROOT = "${SRC_TREE}"
 export KDIR := "${SRC_TREE}/kernel/kernel_platform/kernel"
 PATH_TO_REPO := "git://${SRC_TREE}"
 PROTO = "file"
 PATH_TO_KERNEL := "git://${SRC_TREE}/sources"
 
+#Override by automotive yocto
+DISTRO_VERSION = "\${BUILDNAME}"
+
+# BB_BASEHASH_IGNORE_VARS Tells bitbake to ignore variables
+# The SRC_DIR_ROOT variable is added through build/conf/bblayers.conf
+BB_BASEHASH_IGNORE_VARS:append = " BSPDIR BUILDNAME SRC_DIR_ROOT PATH_TO_REPO QTI_METAPATH_BASE QTI_METAPATH_BASE_PROP QTI_METAPATH_DISTRO \ "
+
+# Show VARIANT in pre-build configuration output
+BUILDCFG_VARS += "VARIANT MACHINE_FEATURES"
+
+# Enable hash equivalency
+BB_SIGNATURE_HANDLER = "OEEquivHash"
+BB_HASHSERVE = "auto"
+
+PACKAGE_DEBUG_SPLIT_STYLE = "debug-without-src"
+
 EOF
+
 
 # Add automotive layers with CSE external layers
 if [ -d "${SRC_TREE}/layers/meta-qcom-hwe" ]; then
@@ -94,8 +111,8 @@ EXTRALAYERS += " \\
   \${WORKSPACE}/layers/meta-qti-auto-kernel \\
   \${WORKSPACE}/layers/meta-clang \\
 "
-EOF
 
+EOF
 fi #if [ -d "${SRC_TREE}/layers/meta-qcom-hwe" ]; then
 
 if [ -f ${SRC_TREE}/layers/meta-qcom-hwe/classes/qprebuilt.bbclass ]; then
@@ -104,3 +121,7 @@ if [ -f ${SRC_TREE}/layers/meta-qcom-hwe/classes/qprebuilt.bbclass ]; then
   rm ${SRC_TREE}/layers/meta-qcom-hwe/classes/qprebuilt.bbclass
 fi
 
+cat >> ${BUILDDIR}/conf/local.conf <<EOF
+USER_CLASSES ?= "buildname"
+BUILDNAME = "\${@get_tag('\${SRC_DIR_ROOT}', d)}"
+EOF
