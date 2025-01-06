@@ -68,5 +68,39 @@ export KDIR := "${SRC_TREE}/kernel/kernel_platform/kernel"
 PATH_TO_REPO := "git://${SRC_TREE}"
 PROTO = "file"
 PATH_TO_KERNEL := "git://${SRC_TREE}/sources"
+
 EOF
+
+# Add automotive layers with CSE external layers
+if [ -d "${SRC_TREE}/layers/meta-qcom-hwe" ]; then
+
+#HY11 build don't need these layers
+if [ -d "${SRC_TREE}/layers/meta-qti-automotive-internal" ]; then
+cat >> ${BUILDDIR}/conf/bblayers.conf <<EOF
+EXTRALAYERS += " \\
+  \${WORKSPACE}/layers/meta-qti-automotive-internal \\
+  \${WORKSPACE}/layers/meta-gplv2 \\
+  \${WORKSPACE}/layers/meta-qt5 \\
+"
+EOF
+fi
+
+cat >> ${BUILDDIR}/conf/bblayers.conf <<EOF
+EXTRALAYERS += " \\
+  \${WORKSPACE}/layers/meta-qti-automotive-prop \\
+  \${WORKSPACE}/layers/meta-qti-automotive-distro \\
+  \${WORKSPACE}/layers/meta-qti-automotive \\
+  \${WORKSPACE}/layers/meta-qti-realtime \\
+  \${WORKSPACE}/layers/meta-qti-auto-kernel \\
+  \${WORKSPACE}/layers/meta-clang \\
+"
+EOF
+
+fi #if [ -d "${SRC_TREE}/layers/meta-qcom-hwe" ]; then
+
+if [ -f ${SRC_TREE}/layers/meta-qcom-hwe/classes/qprebuilt.bbclass ]; then
+  #Conflict and remove qprebuilt.bbclass from meta-qcom-hwe
+  echo "Remove ${SRC_TREE}/layers/meta-qcom-hwe/classes/qprebuilt.bbclass"
+  rm ${SRC_TREE}/layers/meta-qcom-hwe/classes/qprebuilt.bbclass
+fi
 
