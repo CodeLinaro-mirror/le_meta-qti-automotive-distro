@@ -2,6 +2,8 @@ require conf/distro/include/security_flags.inc
 
 require conf/distro/include/distro_features.inc
 
+require conf/distro/include/base.inc
+
 DISTRO_NAME = "automotive"
 DISTROOVERRIDES =. "automotive:"
 # Support SDP
