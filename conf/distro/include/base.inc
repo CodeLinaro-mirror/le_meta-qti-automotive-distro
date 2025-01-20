@@ -70,3 +70,9 @@ DEPLOY_DIR_IMAGE = "${DEPLOY_DIR}/images/${DEPLOY_NAME}"
 USERADDEXTENSION ?= "useradd-staticids"
 USERADD_UID_TABLES:prepend = "files/qti_passwd "
 USERADD_GID_TABLES:prepend = "files/qti_group "
+
+# Enable performance features
+PERF_BUILD = "${@['0', '1'][d.getVar('VARIANT', True) != ('' or 'debug')]}"
+
+# Build optimization to disable debugging features, mainly for production images.
+USER_BUILD = "${@['0', '1'][d.getVar('VARIANT', True) == 'user']}"
