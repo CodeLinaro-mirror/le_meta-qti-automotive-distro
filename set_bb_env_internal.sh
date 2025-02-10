@@ -124,4 +124,7 @@ fi
 cat >> ${BUILDDIR}/conf/local.conf <<EOF
 USER_CLASSES ?= "buildname"
 BUILDNAME = "\${@get_tag('\${SRC_DIR_ROOT}', d)}"
+
+# Let pkgs install files that other pkgs want to install for the recovery images.
+OPKG_ARGS:append = " --force-overwrite"
 EOF
