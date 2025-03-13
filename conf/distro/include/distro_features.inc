@@ -32,8 +32,8 @@ DISTRO_FEATURES:remove:sa8797 = "wifi"
 
 
 # SELinux
-# DISTRO_FEATURES:append:sa8797 = " selinux"
-# DISTRO_FEATURES_NATIVE:append:sa8797 = " selinux"
+DISTRO_FEATURES:remove:sa8797 = " selinux"
+DISTRO_FEATURES_NATIVE:remove:sa8797 = " selinux"
 #TODO enable on sa8797
 
 # Preferred refpolicy
