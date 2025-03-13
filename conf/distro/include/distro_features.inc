@@ -45,3 +45,6 @@ DISTRO_FEATURES:remove = "x11"
 
 # Virtiofsd
 DISTRO_FEATURES:append = " seccomp"
+
+# Video
+DISTRO_FEATURES:append:sa8797 = " qti-gstdeinterlace"
