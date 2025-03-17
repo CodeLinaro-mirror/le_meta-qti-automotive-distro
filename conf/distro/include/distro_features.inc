@@ -42,3 +42,6 @@ DISTRO_FEATURES:remove:sa8797 = "wifi"
 
 # Disable QCLinux Yocto Unused Distro
 DISTRO_FEATURES:remove = "x11"
+
+# Virtiofsd
+DISTRO_FEATURES:append = " seccomp"
