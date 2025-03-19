@@ -1,7 +1,8 @@
 # Support systemd-user-session
 DISTRO_FEATURES:append = " pam"
 
-
+# Disable pulseaudio
+DISTRO_FEATURES_BACKFILL_CONSIDERED:append:sa8797 = " pulseaudio"
 
 # Display
 DISTRO_FEATURES:append = " wayland"
