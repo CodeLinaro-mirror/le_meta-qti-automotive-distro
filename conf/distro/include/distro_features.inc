@@ -33,13 +33,12 @@ DISTRO_FEATURES:remove:sa8797 = "wifi"
 
 
 # SELinux
-DISTRO_FEATURES:remove:sa8797 = " selinux"
-DISTRO_FEATURES_NATIVE:remove:sa8797 = " selinux"
-#TODO enable on sa8797
+DISTRO_FEATURES:append:sa8797 = " selinux"
+DISTRO_FEATURES_NATIVE:append:sa8797 = " selinux"
 
 # Preferred refpolicy
-# PREFERRED_PROVIDER_virtual/refpolicy:sa8797 = "selinux-policy"
-# DEFAULT_ENFORCING:sa8797 = "enforcing"
+PREFERRED_PROVIDER_virtual/refpolicy:sa8797 = "selinux-policy"
+DEFAULT_ENFORCING:sa8797 = "permissive"
 
 # Disable QCLinux Yocto Unused Distro
 DISTRO_FEATURES:remove = "x11"
