@@ -40,6 +40,8 @@ DISTRO_FEATURES_NATIVE:append:sa8797 = " selinux"
 PREFERRED_PROVIDER_virtual/refpolicy:sa8797 = "selinux-policy"
 DEFAULT_ENFORCING:sa8797 = "permissive"
 
+DISTRO_FEATURES:remove:pn-core-image-minimal = "selinux"
+
 # Disable QCLinux Yocto Unused Distro
 DISTRO_FEATURES:remove = "x11"
 
