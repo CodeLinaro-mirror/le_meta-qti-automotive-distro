@@ -23,3 +23,5 @@ qti-bt:x:4057:
 agm:x:4058:
 security:x:4070:
 qseecomd:x:4080:
+early-eth:x:4090:
+setup-qos:x:4091:
