@@ -96,7 +96,6 @@ if [ -d "${SRC_TREE}/layers/meta-qti-automotive-internal" ]; then
 cat >> ${BUILDDIR}/conf/bblayers.conf <<EOF
 EXTRALAYERS += " \\
   \${WORKSPACE}/layers/meta-qti-automotive-internal \\
-  \${WORKSPACE}/layers/meta-gplv2 \\
   \${WORKSPACE}/layers/meta-qt5 \\
 "
 EOF
