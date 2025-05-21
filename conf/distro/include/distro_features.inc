@@ -38,7 +38,7 @@ DISTRO_FEATURES_NATIVE:append:sa8797 = " selinux"
 
 # Preferred refpolicy
 PREFERRED_PROVIDER_virtual/refpolicy:sa8797 = "selinux-policy"
-DEFAULT_ENFORCING:sa8797 = "enforcing"
+DEFAULT_ENFORCING:sa8797 = "permissive"
 
 DISTRO_FEATURES:remove:pn-core-image-minimal = "selinux"
 
