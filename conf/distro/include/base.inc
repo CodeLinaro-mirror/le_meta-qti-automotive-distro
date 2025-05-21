@@ -31,11 +31,10 @@ COMMON_OPTIMIZATION = " \
 COMMON_OPTIMIZATION:class-target:toolchain-gcc = " \
   -fexpensive-optimizations -frename-registers -finline-limit=64 \
   -Wno-error=maybe-uninitialized -Wno-error=unused-result \
+  ${DEBUG_FLAGS} \
   "
 
 FULL_OPTIMIZATION         = "-O2 -fomit-frame-pointer ${COMMON_OPTIMIZATION} "
-# Enable debug option as default for variant-debug distro build
-FULL_OPTIMIZATION:append = " ${@bb.utils.contains('VARIANT', 'debug', '-g', '', d)}"
 DEBUG_OPTIMIZATION:append = " ${COMMON_OPTIMIZATION} "
 
 # NLS
