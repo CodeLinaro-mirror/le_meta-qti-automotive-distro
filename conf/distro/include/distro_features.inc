@@ -38,7 +38,7 @@ DISTRO_FEATURES_NATIVE:append:sa8797 = " selinux"
 
 # Preferred refpolicy
 PREFERRED_PROVIDER_virtual/refpolicy:sa8797 = "selinux-policy"
-DEFAULT_ENFORCING:sa8797 = "permissive"
+DEFAULT_ENFORCING:sa8797 = "enforcing"
 
 DISTRO_FEATURES:remove:pn-core-image-minimal = "selinux"
 
@@ -47,3 +47,6 @@ DISTRO_FEATURES:remove = "x11"
 
 # Virtiofsd
 DISTRO_FEATURES:append = " seccomp"
+
+# Video
+DISTRO_FEATURES:append:sa8797 = " qti-gstdeinterlace"
