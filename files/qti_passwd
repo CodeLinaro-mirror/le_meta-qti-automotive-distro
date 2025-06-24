@@ -17,6 +17,7 @@ cnss-wlan:x:4055:4055::
 ais:x:4056:4056::
 qti-bt:x:4057:4057::
 agm:x:4058:4058::
+ab-updater:x:4060:4060::
 fde:x:4070:4070::
 qseecomd:x:4080:4080::
 early-eth:x:4090:4090::
