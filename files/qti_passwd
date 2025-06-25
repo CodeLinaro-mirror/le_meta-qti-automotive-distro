@@ -6,6 +6,7 @@ camera:x:1006:1006::
 gps:x:1021:1021::
 adb:x:2000:2000::
 sensors:x:3011:3011::
+modules-load:x:3020:3020::
 locclient:x:4021:4021::
 vnw:x:4022:4022::
 acdb-loader:x:4050:4050::

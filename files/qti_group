@@ -11,6 +11,7 @@ net_raw:x:3004:
 net_admin:x:3005:
 sensors:x:3011:
 locclient:x:4021:
+modules-load:x:3020:
 vnw:x:4022:
 acdb-loader:x:4050:
 amfs:x:4051:
