@@ -27,3 +27,6 @@ security:x:4070:
 qseecomd:x:4080:
 early-eth:x:4090:
 setup-qos:x:4091:
+video-driver:x:5000:
+vidc-test-app:x:5010:
+hyp-video-be:x:5020:
