@@ -11,6 +11,7 @@ net_raw:x:3004:
 net_admin:x:3005:
 sensors:x:3011:
 locclient:x:4021:
+modules-load:x:3020:
 vnw:x:4022:
 acdb-loader:x:4050:
 amfs:x:4051:
@@ -21,6 +22,7 @@ cnss-wlan:x:4055:
 ais:x:4056:
 qti-bt:x:4057:
 agm:x:4058:
+ab-updater:x:4060
 security:x:4070:
 qseecomd:x:4080:
 early-eth:x:4090:
