@@ -117,7 +117,7 @@ fi #if [ -d "${SRC_TREE}/layers/meta-qcom-hwe" ]; then
 if [ -f ${SRC_TREE}/layers/meta-qcom-hwe/classes/qprebuilt.bbclass ]; then
   #Conflict and remove qprebuilt.bbclass from meta-qcom-hwe
   echo "Remove ${SRC_TREE}/layers/meta-qcom-hwe/classes/qprebuilt.bbclass"
-  rm ${SRC_TREE}/layers/meta-qcom-hwe/classes/qprebuilt.bbclass
+  rm -f ${SRC_TREE}/layers/meta-qcom-hwe/classes/qprebuilt.bbclass
 fi
 
 cat >> ${BUILDDIR}/conf/local.conf <<EOF
