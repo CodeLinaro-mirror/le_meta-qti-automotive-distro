@@ -7,6 +7,7 @@ DISTRO_FEATURES_BACKFILL_CONSIDERED:append:sa8797 = " pulseaudio"
 # Display
 DISTRO_FEATURES:append = " wayland"
 
+DISTRO_FEATURES:append = " opengl"
 
 # Use synergy, disable bluez
 DISTRO_FEATURES_BACKFILL_CONSIDERED += "bluez5 bluetooth"
