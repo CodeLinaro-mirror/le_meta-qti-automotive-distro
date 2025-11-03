@@ -1,5 +1,8 @@
 # Copyright (c) 2023 Qualcomm Innovation Center, Inc. All rights reserved.
 # SPDX-License-Identifier: BSD-3-Clause-Clear
+# Allocation Rules:
+# - The UID/GID range is between 1000-9999
+# - 10 intervals between each ID (e.g., 4000, 4010, 4020)
 diag:x:53:53::
 system:x:1000:1000::
 camera:x:1006:1006::
@@ -7,23 +10,23 @@ gps:x:1021:1021::
 adb:x:2000:2000::
 sensors:x:3011:3011::
 modules-load:x:3020:3020::
-locclient:x:4021:4021::
-vnw:x:4022:4022::
+locclient:x:4000:4000::
+vnw:x:4010:4010::
+amfs:x:4020:4020::
+codec2:x:4030:4030::
+leprop:x:4040:4040::
 acdb-loader:x:4050:4050::
-amfs:x:4051:4051::
-codec2:x:4052:4052::
-leprop:x:4053:4053::
-binder:x:4054:4054::
-cnss-wlan:x:4055:4055::
-ais:x:4056:4056::
-qti-bt:x:4057:4057::
-agm:x:4058:4058::
 ab-updater:x:4060:4060::
 fde:x:4070:4070::
 qseecomd:x:4080:4080::
 early-eth:x:4090:4090::
-setup-qos:x:4091:4091::
-sv-auto:x:4092:4092::
+binder:x:4100:4100::
+cnss-wlan:x:4110:4110::
+ais:x:4120:4120::
+qti-bt:x:4130:4130::
+agm:x:4140:4140::
+setup-qos:x:4150:4150::
+sv-auto:x:4160:4160::
 video-driver:x:5000:5000::
 vidc-test-app:x:5010:5010::
 hyp-video-be:x:5020:5020::
