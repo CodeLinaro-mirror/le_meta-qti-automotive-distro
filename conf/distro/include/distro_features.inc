@@ -44,6 +44,9 @@ DEFAULT_ENFORCING:sa8797 = "enforcing"
 PREFERRED_PROVIDER_virtual/refpolicy:sa8775 = "selinux-policy"
 DEFAULT_ENFORCING:sa8775 = "permissive"
 
+PREFERRED_PROVIDER_virtual/refpolicy:sa7255 = "selinux-policy"
+DEFAULT_ENFORCING:sa7255 = "permissive"
+
 DISTRO_FEATURES:remove:pn-core-image-minimal = "selinux"
 
 # Disable QCLinux Yocto Unused Distro
