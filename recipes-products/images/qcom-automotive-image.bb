@@ -9,11 +9,11 @@ LICENSE = "BSD-3-Clause-Clear"
 #     packagegroup-qcom-automotive-core-boot \
 # "
 
-IMAGE_INSTALL += " \
+IMAGE_INSTALL += "\
     packagegroup-qti-core-minimal \
     packagegroup-qti-umd \
 "
 
-IMAGE_INSTALL:remove += " \
+IMAGE_INSTALL:remove = "\
     packagegroup-qti-umd \
 " 
