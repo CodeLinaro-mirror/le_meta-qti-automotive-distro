@@ -78,31 +78,42 @@ PACKAGE_DEBUG_SPLIT_STYLE = ".debug"
 EOF
 
 
-# Add automotive layers with CSE external layers
-if [ -d "${SRC_TREE}/layers/meta-qcom-hwe" ]; then
+# Add automotive layers with CSE internal layers
+if [ -e "${SRC_TREE}/layers/meta-qti-distro/conf/bblayers.conf" ]; then
+    sed -i 's/WORKSPACE/SRC_TREE/g' ${SRC_TREE}/layers/meta-qti-distro/conf/bblayers.conf
+    sed -i '/meta-qcom\|meta-rust\|meta-security/d' ${SRC_TREE}/layers/meta-qti-distro/conf/bblayers.conf
+    cat ${SRC_TREE}/layers/meta-qti-distro/conf/bblayers.conf > ${BUILDDIR}/conf/bblayers.conf
+    cat >> ${BUILDDIR}/conf/bblayers.conf <<EOF
+BSPLAYERS += "\\
+  ${SRC_TREE}/layers/meta-qti-distro \\
+  ${SRC_TREE}/layers/meta-qti-bsp \\
+  ${SRC_TREE}/layers/meta-qti-bsp-prop \\
+  ${SRC_TREE}/layers/meta-qti-internal \\
+  ${SRC_TREE}/layers/meta-qcom \\
+"
+EOF
+fi
 
 #HY11 build don't need these layers
 if [ -d "${SRC_TREE}/layers/meta-qti-automotive-internal" ]; then
 cat >> ${BUILDDIR}/conf/bblayers.conf <<EOF
-EXTRALAYERS += " \\
-  \${WORKSPACE}/layers/meta-qti-automotive-internal \\
-  \${WORKSPACE}/layers/meta-qt5 \\
+EXTRALAYERS += "\\
+  ${SRC_TREE}/layers/meta-qti-automotive-internal \\
+  ${SRC_TREE}/layers/meta-qt5 \\
 "
 EOF
 fi
 
 cat >> ${BUILDDIR}/conf/bblayers.conf <<EOF
-EXTRALAYERS += " \\
-  \${WORKSPACE}/layers/meta-qti-automotive-prop \\
-  \${WORKSPACE}/layers/meta-qti-automotive-distro \\
-  \${WORKSPACE}/layers/meta-qti-automotive \\
-  \${WORKSPACE}/layers/meta-qti-realtime \\
-  \${WORKSPACE}/layers/meta-qti-auto-kernel \\
-  \${WORKSPACE}/layers/meta-clang \\
+EXTRALAYERS += "\\
+  ${SRC_TREE}/layers/meta-qti-automotive-prop \\
+  ${SRC_TREE}/layers/meta-qti-automotive-distro \\
+  ${SRC_TREE}/layers/meta-qti-automotive \\
+  ${SRC_TREE}/layers/meta-qti-realtime \\
+  ${SRC_TREE}/layers/meta-qti-auto-kernel \\
+  ${SRC_TREE}/layers/meta-clang \\
 "
-
 EOF
-fi #if [ -d "${SRC_TREE}/layers/meta-qcom-hwe" ]; then
 
 if [ -f ${SRC_TREE}/layers/meta-qcom-hwe/classes/qprebuilt.bbclass ]; then
   #Conflict and remove qprebuilt.bbclass from meta-qcom-hwe
