@@ -2,6 +2,8 @@ require conf/distro/include/security_flags.inc
 
 require conf/distro/include/distro_features.inc
 
+require conf/distro/include/non-gplv3-license.inc
+
 require conf/distro/include/base.inc
 
 DISTRO_NAME = "automotive"
@@ -18,11 +20,6 @@ PERSIST_IMAGE_ROOTFS_SIZE ?= "128M"
 
 VIRTUAL-RUNTIME_dev_manager = "udev"
 VIRTUAL-RUNTIME_init_manager = "systemd"
-
-INCOMPATIBLE_LICENSE = "GPL-3.0-only LGPL-3.0-only AGPL-3.0-only"
-
-INCOMPATIBLE_LICENSE:sa8797 = " "
-INCOMPATIBLE_LICENSE:sa8775 = " "
 
 IMAGE_FEATURES:append = " read-only-rootfs"
 
