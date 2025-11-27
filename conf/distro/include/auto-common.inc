@@ -29,6 +29,9 @@ LICENSE_FLAGS_ACCEPTED += "commercial_ffmpeg"
 
 ERROR_QA:remove:sa8775 = "patch-fuzz"
 
+# In Scarthgap, there is currently not "ignore .debug files", So skip this QA check to avoid too many build warnings.
+WARN_QA:remove = "buildpaths"
+
 # include ${DISTRO_INC_FILES}
 
 # Sizes for EXT4 (in bytes)
