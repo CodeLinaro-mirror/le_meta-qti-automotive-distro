@@ -55,8 +55,6 @@ PACKAGE_SNAP_LIB_SYMLINKS = "0"
 # Don't install ldconfig and associated gubbins
 COMMERCIAL_LICENSE_DEPENDEES = ""
 
-PREFERRED_VERSION_readline ?= "5.2"
-
 PRODUCT ??= "base"
 
 # Retain existing directory structure for msm or mdm distro images.
