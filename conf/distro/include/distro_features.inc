@@ -42,7 +42,7 @@ PREFERRED_PROVIDER_virtual/refpolicy:gen5 = "selinux-policy"
 DEFAULT_ENFORCING:gen5 = "enforcing"
 
 PREFERRED_PROVIDER_virtual/refpolicy:sa8775 = "selinux-policy"
-DEFAULT_ENFORCING:sa8775 = "permissive"
+DEFAULT_ENFORCING:sa8775 = "enforcing"
 
 PREFERRED_PROVIDER_virtual/refpolicy:sa7255 = "selinux-policy"
 DEFAULT_ENFORCING:sa7255 = "permissive"
