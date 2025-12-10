@@ -2,7 +2,7 @@
 DISTRO_FEATURES:append = " pam"
 
 # Disable pulseaudio
-DISTRO_FEATURES_BACKFILL_CONSIDERED:append:sa8797 = " pulseaudio"
+DISTRO_FEATURES_BACKFILL_CONSIDERED:append:gen5 = " pulseaudio"
 
 # Display
 DISTRO_FEATURES:append = " wayland"
@@ -30,19 +30,22 @@ DISTRO_FEATURES:append = " vulkan"
 
 # WLAN
 DISTRO_FEATURES:append = " qti-wlan wifi"
-DISTRO_FEATURES:remove:sa8797 = "wifi"
+DISTRO_FEATURES:remove:gen5 = "wifi"
 
 
 # SELinux
-DISTRO_FEATURES:append:sa8797 = " selinux"
-DISTRO_FEATURES_NATIVE:append:sa8797 = " selinux"
+DISTRO_FEATURES:append:gen5 = " selinux"
+DISTRO_FEATURES_NATIVE:append:gen5 = " selinux"
 
 # Preferred refpolicy
-PREFERRED_PROVIDER_virtual/refpolicy:sa8797 = "selinux-policy"
-DEFAULT_ENFORCING:sa8797 = "enforcing"
+PREFERRED_PROVIDER_virtual/refpolicy:gen5 = "selinux-policy"
+DEFAULT_ENFORCING:gen5 = "enforcing"
 
 PREFERRED_PROVIDER_virtual/refpolicy:sa8775 = "selinux-policy"
 DEFAULT_ENFORCING:sa8775 = "permissive"
+
+PREFERRED_PROVIDER_virtual/refpolicy:sa7255 = "selinux-policy"
+DEFAULT_ENFORCING:sa7255 = "permissive"
 
 DISTRO_FEATURES:remove:pn-core-image-minimal = "selinux"
 
@@ -53,4 +56,4 @@ DISTRO_FEATURES:remove = "x11"
 DISTRO_FEATURES:append = " seccomp"
 
 # Video
-DISTRO_FEATURES:append:sa8797 = " qti-gstdeinterlace"
+DISTRO_FEATURES:append:gen5 = " qti-gstdeinterlace"
