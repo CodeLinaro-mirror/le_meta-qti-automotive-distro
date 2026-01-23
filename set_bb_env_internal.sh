@@ -80,7 +80,6 @@ EOF
 
 # Add automotive layers with CSE internal layers
 if [ -e "${SRC_TREE}/layers/meta-qti-distro/conf/bblayers.conf" ]; then
-    sed -i 's/WORKSPACE/SRC_TREE/g' ${SRC_TREE}/layers/meta-qti-distro/conf/bblayers.conf
     sed -i '/meta-qcom\|meta-rust\|meta-security/d' ${SRC_TREE}/layers/meta-qti-distro/conf/bblayers.conf
     cat ${SRC_TREE}/layers/meta-qti-distro/conf/bblayers.conf > ${BUILDDIR}/conf/bblayers.conf
     cat >> ${BUILDDIR}/conf/bblayers.conf <<EOF
@@ -104,6 +103,7 @@ EXTRALAYERS += "\\
 EOF
 fi
 
+sed -i -e '/^WORKSPACE/d' -e 's/WORKSPACE/SRC_TREE/g' ${BUILDDIR}/conf/bblayers.conf
 cat >> ${BUILDDIR}/conf/bblayers.conf <<EOF
 EXTRALAYERS += "\\
   ${SRC_TREE}/layers/meta-qti-automotive-prop \\
@@ -113,6 +113,8 @@ EXTRALAYERS += "\\
   ${SRC_TREE}/layers/meta-qti-auto-kernel \\
   ${SRC_TREE}/layers/meta-clang \\
 "
+
+SRC_TREE = "${SRC_TREE}"
 EOF
 
 if [ -f ${SRC_TREE}/layers/meta-qcom-hwe/classes/qprebuilt.bbclass ]; then
