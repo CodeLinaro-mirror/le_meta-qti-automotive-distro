@@ -45,9 +45,9 @@ DISTRO_FEATURES_NATIVE:append:sa7255 = " selinux"
 PREFERRED_PROVIDER_virtual/refpolicy:gen5 = "selinux-policy"
 DEFAULT_ENFORCING:gen5 = "enforcing"
 PREFERRED_PROVIDER_virtual/refpolicy:sa8775 = "selinux-policy"
-DEFAULT_ENFORCING:sa8775 = "enforcing"
+DEFAULT_ENFORCING:sa8775 = "permissive"
 PREFERRED_PROVIDER_virtual/refpolicy:sa7255 = "selinux-policy"
-DEFAULT_ENFORCING:sa7255 = "enforcing"
+DEFAULT_ENFORCING:sa7255 = "permissive"
 
 DISTRO_FEATURES:remove:pn-core-image-minimal = "selinux"
 
