@@ -32,6 +32,9 @@ ERROR_QA:remove:sa8775 = "patch-fuzz"
 # In Scarthgap, there is currently not "ignore .debug files", So skip this QA check to avoid too many build warnings.
 WARN_QA:remove = "buildpaths"
 
+# Upgrade some QA warn levels to error
+ERROR_QA += "obsolete-license virtual-slash license-format"
+
 # include ${DISTRO_INC_FILES}
 
 # Sizes for EXT4 (in bytes)
