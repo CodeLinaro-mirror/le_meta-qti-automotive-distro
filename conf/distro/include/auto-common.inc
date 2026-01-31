@@ -27,8 +27,6 @@ LICENSE_FLAGS_ACCEPTED += "commercial_gstreamer1.0-libav commercial_gstreamer1.0
 LICENSE_FLAGS_ACCEPTED += "commercial_gstreamer1.0-plugins-ugly commercial_opencore-amr"
 LICENSE_FLAGS_ACCEPTED += "commercial_ffmpeg"
 
-ERROR_QA:remove:sa8775 = "patch-fuzz"
-
 # In Scarthgap, there is currently not "ignore .debug files", So skip this QA check to avoid too many build warnings.
 WARN_QA:remove = "buildpaths"
 
