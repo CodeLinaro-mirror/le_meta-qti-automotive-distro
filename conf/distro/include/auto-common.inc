@@ -18,6 +18,7 @@ IMAGE_LINK_NAME = "${IMAGE_BASENAME}-${PRODUCT}"
 
 PERSIST_IMAGE_ROOTFS_SIZE ?= "128M"
 
+INIT_MANAGER = "systemd"
 VIRTUAL-RUNTIME_dev_manager = "udev"
 VIRTUAL-RUNTIME_init_manager = "systemd"
 
