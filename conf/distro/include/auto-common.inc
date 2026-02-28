@@ -18,6 +18,7 @@ IMAGE_LINK_NAME = "${IMAGE_BASENAME}-${PRODUCT}"
 
 PERSIST_IMAGE_ROOTFS_SIZE ?= "128M"
 
+INIT_MANAGER = "systemd"
 VIRTUAL-RUNTIME_dev_manager = "udev"
 VIRTUAL-RUNTIME_init_manager = "systemd"
 
@@ -27,10 +28,13 @@ LICENSE_FLAGS_ACCEPTED += "commercial_gstreamer1.0-libav commercial_gstreamer1.0
 LICENSE_FLAGS_ACCEPTED += "commercial_gstreamer1.0-plugins-ugly commercial_opencore-amr"
 LICENSE_FLAGS_ACCEPTED += "commercial_ffmpeg"
 
-ERROR_QA:remove:sa8775 = "patch-fuzz"
+SKIP_META_VIRT_SANITY_CHECK = "1"
 
 # In Scarthgap, there is currently not "ignore .debug files", So skip this QA check to avoid too many build warnings.
 WARN_QA:remove = "buildpaths"
+
+# Upgrade some QA warn levels to error
+ERROR_QA += "obsolete-license virtual-slash license-format"
 
 # include ${DISTRO_INC_FILES}
 
@@ -39,8 +43,6 @@ SYSTEM_SIZE_EXT4 ?= "100000000"
 SYSTEMRW_SIZE_EXT4 ?= "8388608"
 USERDATA_SIZE_EXT4 ?= "2000000000"
 PERSIST_IMAGE_ROOTFS_SIZE ?= "128M"
-
-BB_DANGLINGAPPENDS_WARNONLY = "yes"
 
 #Align with poky/meta-poky/conf/distro/poky.conf
 OE_VERSION ?= "4.0.7"

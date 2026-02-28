@@ -41,7 +41,6 @@ INHERIT += "qfile"
 BBMULTICONFIG:remove = "qcom-guestvm"
 # DL_DIR = "${DL_DIR}"
 BB_GENERATE_MIRROR_TARBALLS="1"
-SSTATE_MIRRORS ?= "file://.* file://${SSTATE_LOCAL_MIRROR}/PATH "
 PATH_TO_REPO ?= "file://"
 AUTOSOURCES = "${SRC_TREE}"
 # AUTOSOURCES = "${SRC_TREE}/sources/automotive"
@@ -64,7 +63,7 @@ DISTRO_VERSION = "\${BUILDNAME}"
 
 # BB_BASEHASH_IGNORE_VARS Tells bitbake to ignore variables
 # The SRC_DIR_ROOT variable is added through build/conf/bblayers.conf
-BB_BASEHASH_IGNORE_VARS:append = " BSPDIR BUILDNAME SRC_DIR_ROOT PATH_TO_REPO QTI_METAPATH_BASE QTI_METAPATH_BASE_PROP QTI_METAPATH_DISTRO \ "
+BB_BASEHASH_IGNORE_VARS:append = " SRC_TREE KDIR WORKSPACE AUTOSOURCES PATH_TO_KERNEL BSPDIR BUILDNAME SRC_DIR_ROOT PATH_TO_REPO QTI_METAPATH_BASE QTI_METAPATH_BASE_PROP QTI_METAPATH_DISTRO \ "
 
 # Show VARIANT in pre-build configuration output
 BUILDCFG_VARS += "VARIANT MACHINE_FEATURES"
@@ -77,17 +76,20 @@ PACKAGE_DEBUG_SPLIT_STYLE = ".debug"
 
 EOF
 
+if [ -e "${SRC_TREE}/layers/meta-qcom-distro/conf/bblayers.conf" ]; then
+    sed -i '/meta-tpm\|meta-security/d' ${SRC_TREE}/layers/meta-qcom-distro/conf/bblayers.conf
+    cat ${SRC_TREE}/layers/meta-qcom-distro/conf/bblayers.conf > ${BUILDDIR}/conf/bblayers.conf
+fi
 
 # Add automotive layers with CSE internal layers
 if [ -e "${SRC_TREE}/layers/meta-qti-distro/conf/bblayers.conf" ]; then
-    sed -i '/meta-qcom\|meta-rust\|meta-security/d' ${SRC_TREE}/layers/meta-qti-distro/conf/bblayers.conf
+    sed -i '/meta-qcom\|meta-tpm\|meta-security/d' ${SRC_TREE}/layers/meta-qti-distro/conf/bblayers.conf
     cat ${SRC_TREE}/layers/meta-qti-distro/conf/bblayers.conf > ${BUILDDIR}/conf/bblayers.conf
     cat >> ${BUILDDIR}/conf/bblayers.conf <<EOF
 BSPLAYERS += "\\
   ${SRC_TREE}/layers/meta-qti-distro \\
   ${SRC_TREE}/layers/meta-qti-bsp \\
   ${SRC_TREE}/layers/meta-qti-bsp-prop \\
-  ${SRC_TREE}/layers/meta-qti-internal \\
   ${SRC_TREE}/layers/meta-qcom \\
 "
 EOF
@@ -123,9 +125,16 @@ if [ -f ${SRC_TREE}/layers/meta-qcom-hwe/classes/qprebuilt.bbclass ]; then
   rm -f ${SRC_TREE}/layers/meta-qcom-hwe/classes/qprebuilt.bbclass
 fi
 
+sed -i '/qcom-internal-cfg/d' ${BUILDDIR}/conf/local.conf
 cat >> ${BUILDDIR}/conf/local.conf <<EOF
 USER_CLASSES ?= "buildname"
 BUILDNAME = "\${@get_tag('\${SRC_DIR_ROOT}', d)}"
+
+# Allow not to use any bb in the following layers
+BBFILE_PATTERN_IGNORE_EMPTY_qti-bsp-prop = "1"
+BBFILE_PATTERN_IGNORE_EMPTY_qcom = "1"
+BBFILE_PATTERN_IGNORE_EMPTY_qcom-hwe = "1"
+BBFILE_PATTERN_IGNORE_EMPTY_qcom-distro = "1"
 
 # Let pkgs install files that other pkgs want to install for the recovery images.
 OPKG_ARGS:append = " --force-overwrite"
