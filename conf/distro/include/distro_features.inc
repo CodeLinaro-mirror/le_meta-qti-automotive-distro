@@ -57,3 +57,6 @@ DISTRO_FEATURES:append = " seccomp"
 
 # Video
 DISTRO_FEATURES:append:gen5 = " qti-gstdeinterlace"
+
+# Enable bluez
+DISTRO_FEATURES:append:gen5 = " bluez5 bluetooth"
