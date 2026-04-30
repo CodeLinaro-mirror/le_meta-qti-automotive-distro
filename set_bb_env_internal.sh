@@ -136,6 +136,9 @@ BBFILE_PATTERN_IGNORE_EMPTY_qcom = "1"
 BBFILE_PATTERN_IGNORE_EMPTY_qcom-hwe = "1"
 BBFILE_PATTERN_IGNORE_EMPTY_qcom-distro = "1"
 
+
+TARGET_DIR = ""
+
 # Let pkgs install files that other pkgs want to install for the recovery images.
 OPKG_ARGS:append = " --force-overwrite"
 EOF
