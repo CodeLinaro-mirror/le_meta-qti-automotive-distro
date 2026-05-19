@@ -105,6 +105,14 @@ EXTRALAYERS += "\\
 EOF
 fi
 
+if [ -d "${SRC_TREE}/layers/meta-qti-cc" ]; then
+        cat >> ${BUILDDIR}/conf/bblayers.conf <<EOF
+EXTRALAYERS += "\\
+  ${SRC_TREE}/layers/meta-qti-cc \\
+"
+EOF
+fi
+
 sed -i -e '/^WORKSPACE/d' -e 's/WORKSPACE/SRC_TREE/g' ${BUILDDIR}/conf/bblayers.conf
 cat >> ${BUILDDIR}/conf/bblayers.conf <<EOF
 EXTRALAYERS += "\\
@@ -135,6 +143,9 @@ BBFILE_PATTERN_IGNORE_EMPTY_qti-bsp-prop = "1"
 BBFILE_PATTERN_IGNORE_EMPTY_qcom = "1"
 BBFILE_PATTERN_IGNORE_EMPTY_qcom-hwe = "1"
 BBFILE_PATTERN_IGNORE_EMPTY_qcom-distro = "1"
+
+
+TARGET_DIR ?= ""
 
 # Let pkgs install files that other pkgs want to install for the recovery images.
 OPKG_ARGS:append = " --force-overwrite"
