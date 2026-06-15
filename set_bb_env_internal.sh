@@ -144,8 +144,8 @@ BBFILE_PATTERN_IGNORE_EMPTY_qcom = "1"
 BBFILE_PATTERN_IGNORE_EMPTY_qcom-hwe = "1"
 BBFILE_PATTERN_IGNORE_EMPTY_qcom-distro = "1"
 
-
-TARGET_DIR ?= ""
+# VARIABLE TO SUPPORT COMMON SI
+TARGET_DIR = "\${@bb.utils.contains('KERNEL_ARCH', 'gen4auto', 'gen4-5/', '', d)}"
 
 # Let pkgs install files that other pkgs want to install for the recovery images.
 OPKG_ARGS:append = " --force-overwrite"
