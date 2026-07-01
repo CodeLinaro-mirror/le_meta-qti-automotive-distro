@@ -24,10 +24,6 @@ VIRTUAL-RUNTIME_init_manager = "systemd"
 
 IMAGE_FEATURES:append = " read-only-rootfs"
 
-LICENSE_FLAGS_ACCEPTED += "commercial_gstreamer1.0-libav commercial_gstreamer1.0-omx"
-LICENSE_FLAGS_ACCEPTED += "commercial_gstreamer1.0-plugins-ugly commercial_opencore-amr"
-LICENSE_FLAGS_ACCEPTED += "commercial_ffmpeg"
-
 SKIP_META_VIRT_SANITY_CHECK = "1"
 
 # In Scarthgap, there is currently not "ignore .debug files", So skip this QA check to avoid too many build warnings.
