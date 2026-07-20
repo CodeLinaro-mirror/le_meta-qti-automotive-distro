@@ -7,6 +7,7 @@ RRECOMMENDS:${PN}-keymaps:remove:pn-kbd = "${PN}-keymaps-pine"
 
 # Eliminate gpl3 readline dependency
 PACKAGECONFIG:remove:pn-nftables = "readline"
+PACKAGECONFIG:remove:pn-bluez5 = "readline"
 
 IMAGE_INSTALL:remove:pn-machine-image = "rt-tests"
 IMAGE_INSTALL:remove:pn-machine-image-pvm = "rt-tests"
