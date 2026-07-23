@@ -5,6 +5,9 @@ PACKAGECONFIG:remove:pn-python3 = "gdbm"
 # Eliminate gpl3 kbd-keymaps-pine dependency
 RRECOMMENDS:${PN}-keymaps:remove:pn-kbd = "${PN}-keymaps-pine"
 
+# Eliminate gpl3 tar dependency
+RRECOMMENDS:systemd-container:remove = "tar"
+
 # Eliminate gpl3 readline dependency
 PACKAGECONFIG:remove:pn-nftables = "readline"
 PACKAGECONFIG:remove:pn-bluez5 = "readline"
