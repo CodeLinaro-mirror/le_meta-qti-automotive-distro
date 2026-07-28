@@ -7,6 +7,7 @@ RRECOMMENDS:${PN}-keymaps:remove:pn-kbd = "${PN}-keymaps-pine"
 
 # Eliminate gpl3 readline dependency
 PACKAGECONFIG:remove:pn-nftables = "readline"
+PACKAGECONFIG:remove:pn-bluez5 = "readline"
 
 IMAGE_INSTALL:remove:pn-machine-image = "rt-tests"
 IMAGE_INSTALL:remove:pn-machine-image-pvm = "rt-tests"
@@ -27,3 +28,4 @@ RDEPENDS:${PN}-fixfiles:remove:pn-policycoreutils = "grep findutils"
 EXTRA_IMAGE_FEATURES:remove:pn-machine-image = "${@bb.utils.contains('PACKAGE_CLASSES', 'package_rpm', 'package-management', '', d)}"
 EXTRA_IMAGE_FEATURES:remove:pn-machine-image-pvm = "${@bb.utils.contains('PACKAGE_CLASSES', 'package_rpm', 'package-management', '', d)}"
 EXTRA_IMAGE_FEATURES:remove:pn-machine-image-lagvm = "${@bb.utils.contains('PACKAGE_CLASSES', 'package_rpm', 'package-management', '', d)}"
+IMAGE_FEATURES:remove:pn-machine-image = "${@bb.utils.contains('PACKAGE_CLASSES', 'package_rpm', 'package-management', '', d)}"

@@ -113,6 +113,14 @@ EXTRALAYERS += "\\
 EOF
 fi
 
+if [ -d "${SRC_TREE}/layers/meta-qti-wlan-prop" ]; then
+        cat >> ${BUILDDIR}/conf/bblayers.conf <<EOF
+EXTRALAYERS += "\\
+  ${SRC_TREE}/layers/meta-qti-wlan-prop \\
+"
+EOF
+fi
+
 sed -i -e '/^WORKSPACE/d' -e 's/WORKSPACE/SRC_TREE/g' ${BUILDDIR}/conf/bblayers.conf
 cat >> ${BUILDDIR}/conf/bblayers.conf <<EOF
 EXTRALAYERS += "\\
