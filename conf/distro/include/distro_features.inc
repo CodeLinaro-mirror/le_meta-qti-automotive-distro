@@ -49,7 +49,7 @@ DEFAULT_ENFORCING:sa7255 = "enforcing"
 DISTRO_FEATURES:remove:pn-core-image-minimal = "selinux"
 
 # Disable QCLinux Yocto Unused Distro
-DISTRO_FEATURES:remove = "x11"
+DISTRO_FEATURES:remove = "x11 nfs"
 
 # Virtiofsd
 DISTRO_FEATURES:append = " seccomp"
