@@ -121,14 +121,21 @@ EXTRALAYERS += "\\
 EOF
 fi
 
+if [ -d "${SRC_TREE}/layers/meta-qti-realtime" ] && [ -d "${SRC_TREE}/layers/meta-qti-auto-kernel" ]; then
+        cat >> ${BUILDDIR}/conf/bblayers.conf <<EOF
+EXTRALAYERS += "\\
+  ${SRC_TREE}/layers/meta-qti-realtime \\
+  ${SRC_TREE}/layers/meta-qti-auto-kernel \\
+"
+EOF
+fi
+
 sed -i -e '/^WORKSPACE/d' -e 's/WORKSPACE/SRC_TREE/g' ${BUILDDIR}/conf/bblayers.conf
 cat >> ${BUILDDIR}/conf/bblayers.conf <<EOF
 EXTRALAYERS += "\\
   ${SRC_TREE}/layers/meta-qti-automotive-prop \\
   ${SRC_TREE}/layers/meta-qti-automotive-distro \\
   ${SRC_TREE}/layers/meta-qti-automotive \\
-  ${SRC_TREE}/layers/meta-qti-realtime \\
-  ${SRC_TREE}/layers/meta-qti-auto-kernel \\
   ${SRC_TREE}/layers/meta-clang \\
 "
 
