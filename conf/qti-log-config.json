@@ -1,0 +1,36 @@
+{
+    "version": 1,
+    "handlers": {
+        "qtilog": {
+            "class": "logging.handlers.RotatingFileHandler",
+            "formatter": "logfileFormatter",
+            "level": "WARNING",
+            "filename": "qti-qa.log",
+            "mode": "a",
+            "backupCount": 1,
+            "maxBytes": 26214400
+        },
+        "console_stdout": {
+            "class": "logging.StreamHandler",
+            "level": "INFO",
+            "formatter": "plainFormatter",
+            "stream": 0
+        }
+    },
+    "formatters": {
+        "logfileFormatter": {
+            "format": ">>>>>>\n%(levelname)s: %(message)s\n<<<<<<"
+        },
+        "plainFormatter": {
+            "format": "%(levelname)s: %(message)s"
+        }
+    },
+    "loggers": {
+        "BitBake": {
+            "handlers": [
+                "qtilog",
+                "console_stdout"
+            ]
+        }
+    }
+}

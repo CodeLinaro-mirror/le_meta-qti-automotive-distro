@@ -5,10 +5,16 @@ PACKAGECONFIG:remove:pn-python3 = "gdbm"
 # Eliminate gpl3 kbd-keymaps-pine dependency
 RRECOMMENDS:${PN}-keymaps:remove:pn-kbd = "${PN}-keymaps-pine"
 
+# Eliminate gpl3 tar dependency
+RRECOMMENDS:systemd-container:remove = "tar"
+
 # Eliminate gpl3 readline dependency
 PACKAGECONFIG:remove:pn-nftables = "readline"
+PACKAGECONFIG:remove:pn-bluez5 = "readline"
 
 IMAGE_INSTALL:remove:pn-machine-image = "rt-tests"
+IMAGE_INSTALL:remove:pn-machine-image-pvm = "rt-tests"
+IMAGE_INSTALL:remove:pn-machine-image-lagvm = "rt-tests"
 IMAGE_INSTALL:remove:pn-early-ramdisk-image = "rt-tests"
 
 # Eliminate gpl3 bash dependency
@@ -23,4 +29,6 @@ RDEPENDS:${PN}-fixfiles:remove:pn-policycoreutils = "grep findutils"
 
 # rpm-related packages will introduce the dependencies of bash
 EXTRA_IMAGE_FEATURES:remove:pn-machine-image = "${@bb.utils.contains('PACKAGE_CLASSES', 'package_rpm', 'package-management', '', d)}"
-
+EXTRA_IMAGE_FEATURES:remove:pn-machine-image-pvm = "${@bb.utils.contains('PACKAGE_CLASSES', 'package_rpm', 'package-management', '', d)}"
+EXTRA_IMAGE_FEATURES:remove:pn-machine-image-lagvm = "${@bb.utils.contains('PACKAGE_CLASSES', 'package_rpm', 'package-management', '', d)}"
+IMAGE_FEATURES:remove:pn-machine-image = "${@bb.utils.contains('PACKAGE_CLASSES', 'package_rpm', 'package-management', '', d)}"
