@@ -95,6 +95,21 @@ BSPLAYERS += "\\
 EOF
 fi
 
+#Add layers for cloudai builds
+if [ -d "${SRC_TREE}/layers/meta-cloudai" ]; then
+cat >> ${BUILDDIR}/conf/bblayers.conf <<EOF
+EXTRALAYERS += "\\
+  ${SRC_TREE}/layers/meta-cloudai \\
+  ${SRC_TREE}/layers/meta-qti-bmc \\
+  ${SRC_TREE}/layers/meta-qti-bmc-prop \\
+  ${SRC_TREE}/layers/meta-qti-security \\
+  ${SRC_TREE}/layers/meta-qti-security-internal \\
+  ${SRC_TREE}/layers/meta-qti-security-prop \\
+  ${SRC_TREE}/layers/meta-qti-core-prop \\
+"
+EOF
+fi
+
 #HY11 build don't need these layers
 if [ -d "${SRC_TREE}/layers/meta-qti-automotive-internal" ]; then
 cat >> ${BUILDDIR}/conf/bblayers.conf <<EOF
@@ -121,14 +136,21 @@ EXTRALAYERS += "\\
 EOF
 fi
 
+if [ -d "${SRC_TREE}/layers/meta-qti-realtime" ] && [ -d "${SRC_TREE}/layers/meta-qti-auto-kernel" ]; then
+        cat >> ${BUILDDIR}/conf/bblayers.conf <<EOF
+EXTRALAYERS += "\\
+  ${SRC_TREE}/layers/meta-qti-realtime \\
+  ${SRC_TREE}/layers/meta-qti-auto-kernel \\
+"
+EOF
+fi
+
 sed -i -e '/^WORKSPACE/d' -e 's/WORKSPACE/SRC_TREE/g' ${BUILDDIR}/conf/bblayers.conf
 cat >> ${BUILDDIR}/conf/bblayers.conf <<EOF
 EXTRALAYERS += "\\
   ${SRC_TREE}/layers/meta-qti-automotive-prop \\
   ${SRC_TREE}/layers/meta-qti-automotive-distro \\
   ${SRC_TREE}/layers/meta-qti-automotive \\
-  ${SRC_TREE}/layers/meta-qti-realtime \\
-  ${SRC_TREE}/layers/meta-qti-auto-kernel \\
   ${SRC_TREE}/layers/meta-clang \\
 "
 
