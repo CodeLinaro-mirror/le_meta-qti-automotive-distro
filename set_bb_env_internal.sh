@@ -95,6 +95,21 @@ BSPLAYERS += "\\
 EOF
 fi
 
+#Add layers for cloudai builds
+if [ -d "${SRC_TREE}/layers/meta-cloudai" ]; then
+cat >> ${BUILDDIR}/conf/bblayers.conf <<EOF
+EXTRALAYERS += "\\
+  ${SRC_TREE}/layers/meta-cloudai \\
+  ${SRC_TREE}/layers/meta-qti-bmc \\
+  ${SRC_TREE}/layers/meta-qti-bmc-prop \\
+  ${SRC_TREE}/layers/meta-qti-security \\
+  ${SRC_TREE}/layers/meta-qti-security-internal \\
+  ${SRC_TREE}/layers/meta-qti-security-prop \\
+  ${SRC_TREE}/layers/meta-qti-core-prop \\
+"
+EOF
+fi
+
 #HY11 build don't need these layers
 if [ -d "${SRC_TREE}/layers/meta-qti-automotive-internal" ]; then
 cat >> ${BUILDDIR}/conf/bblayers.conf <<EOF
