@@ -39,6 +39,8 @@ DISTRO_FEATURES:append:sa7255 = " selinux"
 DISTRO_FEATURES_NATIVE:append:sa7255 = " selinux"
 DISTRO_FEATURES:append:gvm-gen4-5 = " selinux"
 DISTRO_FEATURES_NATIVE:append:gvm-gen4-5 = " selinux"
+DISTRO_FEATURES:append:gvm-gen5 = " selinux"
+DISTRO_FEATURES_NATIVE:append:gvm-gen5 = " selinux"
 
 # Preferred sepolicy
 PREFERRED_PROVIDER_virtual/refpolicy:gen5 = "selinux-policy"
@@ -49,6 +51,8 @@ PREFERRED_PROVIDER_virtual/refpolicy:sa7255 = "selinux-policy"
 DEFAULT_ENFORCING:sa7255 = "enforcing"
 PREFERRED_PROVIDER_virtual/refpolicy:gvm-gen4-5 = "selinux-policy"
 DEFAULT_ENFORCING:gvm-gen4-5 = "permissive"
+PREFERRED_PROVIDER_virtual/refpolicy:gvm-gen5 = "selinux-policy"
+DEFAULT_ENFORCING:gvm-gen5 = "permissive"
 
 DISTRO_FEATURES:remove:pn-core-image-minimal = "selinux"
 
