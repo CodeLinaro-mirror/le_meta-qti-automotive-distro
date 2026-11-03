@@ -32,3 +32,11 @@ vidc-test-app:x:5010:5010::
 hyp-video-be:x:5020:5020::
 display:x:5030:5030::
 eva:x:5040:5040::
+comp_osal_group:x:5050:5050::
+comp_resmon_group:x:5051:5051::
+comp_resmgr_group:x:5052:5052::
+comp_ressched_group:x:5053:5053::
+nspconfig_service_group:x:5054:5054::
+nsp_drv_group:x:5055:5055::
+powercyclemgr_group:x:5056:5056::
+inframan_group:x:5057:5057::
